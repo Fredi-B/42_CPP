@@ -32,3 +32,4 @@
 *.app
 cpp_00/ex00/megaphone
 cpp_00/ex01/phonebook
+cpp_00/.vscode/settings.json
