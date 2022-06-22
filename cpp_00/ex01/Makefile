@@ -4,7 +4,7 @@ NAME = phonebook
 CPP = c++
 CPP_FLAGS= -Wall -Wextra -Werror
 
-CPP_FILES = phonebook.cpp
+CPP_FILES = main.cpp PhoneBook.cpp Contact.cpp
 
 O_DIR = o_files
 OBJECTS := $(patsubst %.cpp,%.o,$(CPP_FILES))
