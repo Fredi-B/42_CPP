@@ -67,11 +67,16 @@ void	PhoneBook::display_contacts(void)
 				std::cout << std::right << this->contacts[i].get_field("first_name") << "|";
 			else
 				std::cout << std::right << this->truncate_contact_detail(contacts[i].get_field("first_name")) << "|";
-			/* die beiden couts machen wie oben */
 			std::cout.width(10);
-			std::cout << std::right << this->contacts[i].get_field("last_name") << "|";
+			if (this->contacts[i].get_field("last_name").length() <= 10)
+				std::cout << std::right << this->contacts[i].get_field("last_name") << "|";
+			else
+				std::cout << std::right << this->truncate_contact_detail(contacts[i].get_field("last_name")) << "|";
 			std::cout.width(10);
-			std::cout << std::right << this->contacts[i].get_field("nickname") << "|" << std::endl;
+			if (this->contacts[i].get_field("nickname").length() <= 10)
+				std::cout << std::right << this->contacts[i].get_field("nickname") << std::endl;
+			else
+				std::cout << std::right << this->truncate_contact_detail(contacts[i].get_field("nickname")) << std::endl;
 		}
 		i++;
 	}
@@ -83,4 +88,3 @@ std::string	PhoneBook::truncate_contact_detail(std::string contact_detail)
 	contact_detail.replace(9, 1, ".");
 	return (contact_detail);
 }
-
