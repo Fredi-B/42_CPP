@@ -21,15 +21,15 @@ bool	PhoneBook::add_contact(int index)
 	std::string	phone_number = "";
 	std::string	darkest_secret = "";
 
-	while (first_name == "")
+	while (first_name == "" && !std::cin.eof())
 		first_name = this->get_contact_details("first name");
-	while (last_name == "")
+	while (last_name == "" && !std::cin.eof())
 		last_name = this->get_contact_details("last name");
-	while (nickname == "")
+	while (nickname == "" && !std::cin.eof())
 		nickname = this->get_contact_details("nickname");
-	while (phone_number == "")
+	while (phone_number == "" && !std::cin.eof())
 		phone_number = this->get_contact_details("phone number");
-	while (darkest_secret == "")
+	while (darkest_secret == "" && !std::cin.eof())
 		darkest_secret = this->get_contact_details("darkest secret");
 	PhoneBook::contacts[index].set_field("first_name", first_name);
 	PhoneBook::contacts[index].set_field("last_name", last_name);
