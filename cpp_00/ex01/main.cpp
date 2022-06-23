@@ -23,6 +23,8 @@ int	main(void)
 		}
 		else if (input == "EXIT")
 			break ;
+		else
+			std::cout << "You can ADD, SEARCH or EXIT" << std::endl;
 	}
 	return (0);
 }
