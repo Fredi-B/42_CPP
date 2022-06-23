@@ -88,3 +88,30 @@ std::string	PhoneBook::truncate_contact_detail(std::string contact_detail)
 	contact_detail.replace(9, 1, ".");
 	return (contact_detail);
 }
+
+void	PhoneBook::search_contact(void)
+{
+	std::string	index_to_search = "";
+
+	while ((index_to_search[0] < '0' || index_to_search[0] > '9' || index_to_search == "" || index_to_search.length() > 1) && !std::cin.eof())
+		index_to_search = this->get_index();
+	if (!std::cin.eof())
+	{
+		std::cout << this->contacts[index_to_search[0] - '1'].get_field("first_name") << std::endl;
+		std::cout << this->contacts[index_to_search[0] - '1'].get_field("last_name") << std::endl;
+		std::cout << this->contacts[index_to_search[0] - '1'].get_field("nickname") << std::endl;
+		std::cout << this->contacts[index_to_search[0] - '1'].get_field("phone_number") << std::endl;
+		std::cout << this->contacts[index_to_search[0] - '1'].get_field("darkest_secret") << std::endl;
+	}
+}
+
+std::string PhoneBook::get_index(void)
+{
+	std::string	index_to_search;
+
+	std::cout << "Enter index:" << std::endl;
+	std::getline(std::cin, index_to_search);
+	if ((index_to_search[0] < '0' || index_to_search[0] > '9' || index_to_search == "" || index_to_search.length() > 1) && !std::cin.eof())
+		std::cout << "Hint: enter a digit" << std::endl;
+	return (index_to_search);
+}

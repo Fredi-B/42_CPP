@@ -20,6 +20,7 @@ int	main(void)
 		else if (input == "SEARCH")
 		{
 			phonebook.display_contacts();
+			phonebook.search_contact();
 		}
 		else if (input == "EXIT")
 			break ;

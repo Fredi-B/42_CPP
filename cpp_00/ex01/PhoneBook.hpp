@@ -12,7 +12,7 @@ class PhoneBook
 
 		std::string	get_contact_details(std::string field);
 		std::string	truncate_contact_detail(std::string contact_detail);
-		
+		std::string	get_index();
 	public:
 
 		PhoneBook(void);
@@ -20,6 +20,7 @@ class PhoneBook
 
 		bool	add_contact(int index);
 		void	display_contacts(void);
+		void	search_contact(void);
 };
 
 #endif
