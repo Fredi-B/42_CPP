@@ -3,13 +3,22 @@
 
 Account::Account(int initial_deposit) : _amount(initial_deposit)
 {
-	std::cout << "add timestamp" << "index:" << this->_nbAccounts << ";amount:" << this->_amount << ";created" << std::endl;
-	this->_nbAccounts++;
+	this->_displayTimestamp();
 	return;
 }
 
 Account::~Account(void)
 {
+	this->_displayTimestamp();
+void	Account::_displayTimestamp(void)
+{
+	std::time_t t = std::time(0);
+	std::tm *now = std::localtime(&t);
+	/* change format of month? */
+	std::cout << (now->tm_year + 1900) << "0" << (now->tm_mon + 1) <<  now->tm_mday << "_" \
+		<< now->tm_hour << now->tm_min << now->tm_sec << " ";
+}
+
 int	Account::getNbAccounts(void)
 {
 	return (_nbAccounts);
