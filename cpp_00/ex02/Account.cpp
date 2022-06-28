@@ -1,4 +1,5 @@
 #include <iostream>
+#include <ctime>
 #include "Account.hpp"
 
 int	Account::_nbAccounts = 0;
@@ -9,12 +10,18 @@ int	Account::_totalNbWithdrawals = 0;
 Account::Account(int initial_deposit) : _amount(initial_deposit)
 {
 	this->_displayTimestamp();
+	std::cout << "index:" << _nbAccounts << ";amount:" << this->_amount << ";created" << std::endl;
+	_nbAccounts++;
 	return;
 }
 
 Account::~Account(void)
 {
 	this->_displayTimestamp();
+	std::cout << "index:" << _nbAccounts << ";amount:" << this->_amount << ";closed" << std::endl;
+	_nbAccounts--;
+}
+
 void	Account::_displayTimestamp(void)
 {
 	std::time_t t = std::time(0);
