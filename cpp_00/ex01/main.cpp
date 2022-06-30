@@ -8,6 +8,9 @@ int	main(void)
 	int			index;
 
 	index = 0;
+
+	std::cout << "Welcome" << std::endl;
+	std::cout << "You can ADD, SEARCH or EXIT" << std::endl;
 	while (std::getline(std::cin, input))
 	{
 		if (input == "ADD")
@@ -24,8 +27,9 @@ int	main(void)
 		}
 		else if (input == "EXIT")
 			break ;
-		else
-			std::cout << "You can ADD, SEARCH or EXIT" << std::endl;
+		std::cout << "\nYou can ADD, SEARCH or EXIT" << std::endl;
 	}
+	std::cout << "\n#####   PHONEBOOK CLOSED  #####" << std::endl;
+	std::cout << "##### ALL CONTACTS ERASED #####" << std::endl;
 	return (0);
 }
