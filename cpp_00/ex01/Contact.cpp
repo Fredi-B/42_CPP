@@ -1,17 +1,9 @@
 #include <iostream>
 #include "Contact.hpp"
 
-Contact::Contact(void)
-{
-	std::cout << "Contact created" << std::endl;
-	return;
-}
+Contact::Contact(void) { }
 
-Contact::~Contact(void)
-{
-	std::cout << "Contact deleted" << std::endl;
-	return;
-}
+Contact::~Contact(void) { }
 
 void	Contact::set_field(std::string field, std::string input)
 {
