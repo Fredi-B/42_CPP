@@ -47,13 +47,18 @@ void	PhoneBook::display_contacts(void)
 {
 	int	i;
 
+	if (this->contacts[0].get_field("first_name") == "")
+	{
+		std::cout << "Phonebook empty" << std::endl;
+		return ;
+	}
 	i = 0;
 	while (i < 8)
 	{
 		if (this->contacts[i].get_field("first_name") != "")
 		{
 			std::cout.width(10);
-			std::cout << std::right << i + 1<< "|";
+			std::cout << std::right << i + 1 << "|";
 			std::cout.width(10);
 			if (this->contacts[i].get_field("first_name").length() <= 10)
 				std::cout << std::right << this->contacts[i].get_field("first_name") << "|";
@@ -85,15 +90,27 @@ void	PhoneBook::search_contact(void)
 {
 	std::string	index_to_search = "";
 
-	while ((index_to_search[0] < '0' || index_to_search[0] > '9' || index_to_search == "" || index_to_search.length() > 1) && !std::cin.eof())
+	if (this->contacts[0].get_field("first_name") == "")
+		return ;
+	while ((index_to_search[0] < '1' || index_to_search[0] > '8' || index_to_search == "" || index_to_search.length() > 1) && !std::cin.eof())
 		index_to_search = this->get_index();
+	if ((this->contacts[index_to_search[0] - '1'].get_field("first_name") == ""))
+	{
+		std::cout << "Index not valid" << std::endl;
+		return ;
+	}
 	if (!std::cin.eof())
 	{
-		std::cout << this->contacts[index_to_search[0] - '1'].get_field("first_name") << std::endl;
-		std::cout << this->contacts[index_to_search[0] - '1'].get_field("last_name") << std::endl;
-		std::cout << this->contacts[index_to_search[0] - '1'].get_field("nickname") << std::endl;
-		std::cout << this->contacts[index_to_search[0] - '1'].get_field("phone_number") << std::endl;
-		std::cout << this->contacts[index_to_search[0] - '1'].get_field("darkest_secret") << std::endl;
+		std::cout.width(16);
+		std::cout << std::left << "First name: " << this->contacts[index_to_search[0] - '1'].get_field("first_name") << std::endl;
+		std::cout.width(16);
+		std::cout << std::left << "Last name: " << this->contacts[index_to_search[0] - '1'].get_field("last_name") << std::endl;
+		std::cout.width(16);
+		std::cout << std::left << "Nickname: " << this->contacts[index_to_search[0] - '1'].get_field("nickname") << std::endl;
+		std::cout.width(16);
+		std::cout << std::left << "Phone number: " << this->contacts[index_to_search[0] - '1'].get_field("phone_number") << std::endl;
+		std::cout.width(16);
+		std::cout << std::left << "Darkest secret: " << this->contacts[index_to_search[0] - '1'].get_field("darkest_secret") << std::endl;
 	}
 }
 
