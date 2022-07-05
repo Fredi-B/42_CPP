@@ -12,10 +12,11 @@
 // 	axe.setType("blub");
 // 	bob.attack();
 
-// 	jim.setWeapon(&axe);
+// 	jim.setWeapon(axe);
 // 	jim.attack();
 // 	axe.setType("bla");
 // 	jim.attack();
+// 	system("leaks weapon");
 
 // }
 
