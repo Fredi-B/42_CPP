@@ -21,14 +21,14 @@ int	main(int argc, char **argv)
 	outfile_name = infile_name;
 	outfile_name.append(".replace");
 
-	std::ifstream	infile(infile_name);
-	if (infile.fail())
+	std::ifstream	infile(infile_name, std::ifstream::in);
+	if (!infile.is_open())
 	{
 		std::cout << "Errorr: Could not open infile: " << infile_name << std::endl;
 		return (1);
 	}
-	std::ofstream	outfile(outfile_name);
-	if (outfile.fail())
+	std::ofstream	outfile(outfile_name, std::ifstream::out);
+	if (!outfile.is_open())
 	{
 		std::cout << "Errorr: Could not open outfile: " << outfile_name << std::endl;
 		return (1);
