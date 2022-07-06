@@ -37,10 +37,14 @@ int	main(int argc, char **argv)
 	while(!infile.eof())
 	{
 		getline(infile, buffer);
+		std::string	tmp(buffer);
 		while ((pos_of_match = buffer.find(s1)) != std::string::npos)
 		{
 			buffer.erase(pos_of_match, s1.length());
 			buffer.insert(pos_of_match, s2);
+			tmp = buffer.substr(0, pos_of_match + s2.length());
+			outfile << tmp;
+			buffer = buffer.substr(pos_of_match + s2.length());
 		}
 		outfile << buffer;
 		if (infile.eof())
