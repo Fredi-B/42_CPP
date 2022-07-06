@@ -17,13 +17,10 @@ void	Harl::complain(std::string level)
 	}
 	switch (i)
 	{
-	case 0: (this->*fctPtrArr[i])();
-			i++;
-	case 1: (this->*fctPtrArr[i])();
-			i++;
-	case 2: (this->*fctPtrArr[i])();
-			i++;
-	case 3: (this->*fctPtrArr[i])();
+	case 0: (this->*fctPtrArr[0])();
+	case 1: (this->*fctPtrArr[1])();
+	case 2: (this->*fctPtrArr[2])();
+	case 3: (this->*fctPtrArr[3])();
 			break ;
 	default: std::cout << "Everything is fine." << std::endl;
 			std::cout << std::endl;
