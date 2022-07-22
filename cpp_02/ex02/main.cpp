@@ -6,7 +6,7 @@ int	main(void)
 	Fixed	b(Fixed(5.05f) * Fixed(2));
 	Fixed	c(0);
 
-	const Fixed	d(10);
+	const Fixed	d(12);
 	const Fixed	e(15);
 
 /* check 6 comparison operators */
@@ -58,9 +58,11 @@ int	main(void)
 	// std::cout << a-- << std::endl;
 	// std::cout << a << std::endl;
 
+	std::cout << b << std::endl;
+
 /* check 4 public overloaded member functions */
 	// std::cout << Fixed::min(a, b) << std::endl;
-	// std::cout << Fixed::max(a, b) << std::endl;
+	std::cout << Fixed::max(a, b) << std::endl;
 	// std::cout << Fixed::min(e, d) << std::endl;
 	// std::cout << Fixed::max(e, d) << std::endl;
 	
