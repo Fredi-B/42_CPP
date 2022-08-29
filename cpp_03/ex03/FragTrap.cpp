@@ -3,17 +3,21 @@
 FragTrap::FragTrap(void) : ClapTrap()
 {
 	std::cout << "FragTrap constructed" << std::endl;
-	this->setHitPoints(100);
-	this->setEnergyPoints(100);
-	this->setAttackDamage(30);
+
+	this->name = "noname";
+	this->hit_points = 100;
+	this->energy_points = 100;
+	this->attack_damage = 30;
 }
 
 FragTrap::FragTrap(std::string name) : ClapTrap::ClapTrap(name)
 {
 	std::cout << "FragTrap " << name << " constructed" << std::endl;
-	this->setHitPoints(100);
-	this->setEnergyPoints(100);
-	this->setAttackDamage(30);
+
+	this->name = name;
+	this->hit_points = 100;
+	this->energy_points = 100;
+	this->attack_damage = 30;
 }
 
 FragTrap::FragTrap(const FragTrap &other) : ClapTrap::ClapTrap(other)
@@ -26,19 +30,30 @@ FragTrap::~FragTrap(void)
 	std::cout << "FragTrap destructed" << std::endl;
 }
 /* --------------------------------------------------------------------------------- */
-
+FragTrap	&FragTrap::operator=(const FragTrap &other)
+{
+	if (this != &other)
+	{
+		this->name = other.name;
+		this->hit_points = other.hit_points;
+		this->energy_points = other.energy_points;
+		this->attack_damage = other.attack_damage;
+	}
+	return (*this);
+}
+/* `````````````````````````````````````````````````````````````````````````````````` */
 void	FragTrap::attack(const std::string &target)
 {
-	if (this->getEnergyPoints() > 0 && this->getHitPoints() > 0)
+	if (this->energy_points > 0 && this->energy_points > 0)
 	{
-		std::cout << "FragTrap " << this->getName() << " attacks " 
-		<< target << ", causing " << this->getAttackDamage() << " points of damage!" 
+		std::cout << "FragTrap " << this->name << " attacks " 
+		<< target << ", causing " << this->attack_damage << " points of damage!" 
 		<< std::endl;
-		this->setEnergyPoints(getEnergyPoints() - 1);
+		this->energy_points--;
 	}
 	else
 	{
-		std::cout << this->getName() << " can't attack! Peace " << target << std::endl;
+		std::cout << this->name << " can't attack! Peace " << target << std::endl;
 	}
 }
 

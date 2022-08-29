@@ -26,7 +26,18 @@ FragTrap::~FragTrap(void)
 	std::cout << "FragTrap destructed" << std::endl;
 }
 /* --------------------------------------------------------------------------------- */
-
+FragTrap	&FragTrap::operator=(const FragTrap &other)
+{
+	if (this != &other)
+	{
+		this->name = other.getName();
+		this->hit_points = other.getHitPoints();
+		this->energy_points = other.getEnergyPoints();
+		this->attack_damage = other.getAttackDamage();
+	}
+	return (*this);
+}
+/* `````````````````````````````````````````````````````````````````````````````````` */
 void	FragTrap::attack(const std::string &target)
 {
 	if (this->getEnergyPoints() > 0 && this->getHitPoints() > 0)

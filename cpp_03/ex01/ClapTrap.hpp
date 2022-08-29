@@ -13,9 +13,9 @@ public:
 /* --------------------------------------------------------------------------------- */
 	ClapTrap	&operator=(const ClapTrap &other);
 /* `````````````````````````````````````````````````````````````````````````````````` */
-	virtual	void	attack(const std::string &target);
-	void			takeDamage(unsigned int amout);
-	void			beRepaired(unsigned int amout);
+	void	attack(const std::string &target);
+	void	takeDamage(unsigned int amout);
+	void	beRepaired(unsigned int amout);
 /* `````````````````````````````````````````````````````````````````````````````````` */
 	void			setName(std::string name);
 	void			setHitPoints(unsigned int amount);
@@ -27,7 +27,7 @@ public:
 	unsigned int	getAttackDamage(void) const;
 
 /*====================================================================================== */
-private:
+protected:
 	std::string		name;
 	unsigned int	hit_points;
 	unsigned int	energy_points;
