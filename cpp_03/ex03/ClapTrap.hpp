@@ -35,4 +35,5 @@ protected:
 };
 
 std::ostream &operator<<(std::ostream &o, const ClapTrap &ct);
+
 #endif

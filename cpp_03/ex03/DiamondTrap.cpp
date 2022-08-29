@@ -3,28 +3,26 @@
 DiamondTrap::DiamondTrap(void) : ClapTrap()
 {
 	std::cout << "DiamondTrap constructed" << std::endl;
-	{
-		this->name = "noname";
-		this->hit_points = FragTrap::hit_points;
-		this->energy_points = ScavTrap::energy_points;
-		this->attack_damage = FragTrap::attack_damage;
-	}
+	this->name = "noname";
+	this->hit_points = FragTrap::hit_points;
+	this->energy_points = ScavTrap::energy_points;
+	this->attack_damage = FragTrap::attack_damage;
 }
 
-DiamondTrap::DiamondTrap(std::string name) : ClapTrap(name + "_clap_name")
+DiamondTrap::DiamondTrap(std::string name)
 {
 	std::cout << "DiamondTrap " << name << " constructed" << std::endl;
-	{
-		this->name = name;
-		this->hit_points = FragTrap::hit_points;
-		this->energy_points = ScavTrap::energy_points;
-		this->attack_damage = FragTrap::attack_damage;
-	}
+	this->name = name;
+	this->ClapTrap::name = name + "_clap_name";
+	this->hit_points = FragTrap::hit_points;
+	this->energy_points = ScavTrap::energy_points;
+	this->attack_damage = FragTrap::attack_damage;
 }
 
-DiamondTrap::DiamondTrap(const DiamondTrap &other) : ClapTrap(other), FragTrap(other), ScavTrap(other)
+DiamondTrap::DiamondTrap(const DiamondTrap &other) : ClapTrap(other), ScavTrap(other), FragTrap(other)
 {
 	std::cout << "DiamondTrap_Copy constructed" << std::endl;
+	*this = other;
 }
 
 DiamondTrap::~DiamondTrap(void)
@@ -54,9 +52,4 @@ void	DiamondTrap::attack(const std::string &target)
 void	DiamondTrap::whoAmI(void)
 {
 	std::cout << "Name: " << this->name << " | Base name: " << this->ClapTrap::name << std::endl;
-	std::cout << this->ScavTrap::attack_damage << std::endl;
-	std::cout << this->ClapTrap::attack_damage << std::endl;
-	std::cout << this->FragTrap::attack_damage << std::endl;
-	std::cout << this->DiamondTrap::attack_damage << std::endl;
-
 }
