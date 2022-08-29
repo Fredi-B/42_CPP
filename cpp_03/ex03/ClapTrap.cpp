@@ -91,3 +91,12 @@ std::string		ClapTrap::getName(void) const {return (this->name);}
 unsigned int	ClapTrap::getHitPoints(void) const {return (this->hit_points);}
 unsigned int	ClapTrap::getEnergyPoints(void) const {return (this->energy_points);}
 unsigned int	ClapTrap::getAttackDamage(void) const {return (this->attack_damage);}
+
+std::ostream &operator<<(std::ostream &o, const ClapTrap &ct)
+{
+    o << ct.getName() << "\nhit points: " << ct.getHitPoints()
+        << "\nenergy points: " << ct.getEnergyPoints()
+        << "\nattack damage: " << ct.getAttackDamage()
+        << "\n";
+    return (o);
+}

@@ -34,4 +34,5 @@ protected:
 	unsigned int	attack_damage;
 };
 
+std::ostream &operator<<(std::ostream &o, const ClapTrap &ct);
 #endif
