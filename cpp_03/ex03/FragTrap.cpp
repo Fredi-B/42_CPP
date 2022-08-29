@@ -23,6 +23,7 @@ FragTrap::FragTrap(std::string name) : ClapTrap::ClapTrap(name)
 FragTrap::FragTrap(const FragTrap &other) : ClapTrap::ClapTrap(other)
 {
 	std::cout << "FragTrap_Copy constructed" << std::endl;
+	*this = other;
 }
 
 FragTrap::~FragTrap(void)
