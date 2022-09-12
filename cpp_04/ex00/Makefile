@@ -4,7 +4,7 @@ NAME = animals
 CPP = c++
 CPP_FLAGS= -Wall -Wextra -Werror
 
-CPP_FILES = main.cpp Animal.cpp Cat.cpp Dog.cpp
+CPP_FILES = main.cpp Animal.cpp Cat.cpp Dog.cpp WrongAnimal.cpp WrongCat.cpp
 
 O_DIR = o_files
 OBJECTS := $(patsubst %.cpp,%.o,$(CPP_FILES))

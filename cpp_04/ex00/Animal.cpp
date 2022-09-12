@@ -27,14 +27,7 @@ Animal	&Animal::operator=(const Animal &other)
 
 void	Animal::makeSound(void) const
 {
-	if (this->type == "Cat")
-	{
-		std::cout << "Meow" << std::endl;
-	}
-	else if (this->type == "Dog")
-	{
-	std::cout << "Wauu" << std::endl;
-	}
+	std::cout << "sound of silence" << std::endl;
 }
 
 std::string	Animal::getType(void) const {return (this->type);}
