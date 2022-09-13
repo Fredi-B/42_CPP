@@ -33,3 +33,7 @@
 cpp_00/ex00/megaphone
 cpp_00/ex01/phonebook
 cpp_00/.vscode/settings.json
+.DS_Store
+.vscode/settings.json
+cpp_04/ex01/brains.dSYM/Contents/Info.plist
+cpp_04/ex01/brains.dSYM/Contents/Resources/DWARF/brains
