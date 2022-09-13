@@ -32,3 +32,24 @@ void	Dog::makeSound(void) const
 {
 	std::cout << "Wauu" << std::endl;
 }
+
+Brain	*Dog::getBrain(void) const
+{
+	return (this->brain);
+}
+
+void	Dog::setIdea(std::string idea, unsigned int i)
+{
+	if (i > 0 && i <= 100)
+		this->brain->ideas[i - 1] = idea;
+	else
+		std::cout << "too sophisticated" << std::endl;
+}
+
+std::string	Dog::getIdea(unsigned int i) const
+{
+	if (i <= 100)
+		return (this->brain->ideas[i - 1]);
+	else
+		return ("yawning void");
+}
