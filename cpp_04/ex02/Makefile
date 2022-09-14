@@ -1,6 +1,6 @@
 # _*_ Makefile _*_
 
-NAME = brains
+NAME = abstract
 CPP = c++
 CPP_FLAGS= -Wall -Wextra -Werror
 
