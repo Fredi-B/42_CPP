@@ -2,23 +2,23 @@
 
 AMateria::AMateria(void) : type("AMateria")
 {
-	std::cout << "AMateria constructed" << std::endl;
+	// std::cout << "AMateria constructed" << std::endl;
 }
 
 AMateria::AMateria(std::string const &type) : type(type)
 {
-	std::cout << "AMateria of type " << this->type << " constructed" << std::endl;
+	// std::cout << "AMateria of type " << this->type << " constructed" << std::endl;
 }
 
 AMateria::AMateria(const AMateria &other)
 {
 	*this = other;
-	std::cout << "Copy of AMateria constructed" << std::endl;
+	// std::cout << "Copy of AMateria constructed" << std::endl;
 }
 
 AMateria::~AMateria(void)
 {
-	std::cout << "AMateria destructed" << std::endl;
+	// std::cout << "AMateria destructed" << std::endl;
 }
 
 AMateria	&AMateria::operator=(const AMateria &other)

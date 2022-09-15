@@ -2,18 +2,18 @@
 
 Ice::Ice(void) : AMateria("ice")
 {
-	std::cout << "Ice materia constructed" << std::endl;
+	// std::cout << "Ice materia constructed" << std::endl;
 }
 
 Ice::Ice(const Ice &other)
 {
 	*this = other;
-	std::cout << "Copy of Ice materia constructed" << std::endl;
+	// std::cout << "Copy of Ice materia constructed" << std::endl;
 }
 
 Ice::~Ice(void)
 {
-	std::cout << "Ice materia destructed" << std::endl;
+	// std::cout << "Ice materia destructed" << std::endl;
 }
 
 Ice	&Ice::operator=(const Ice &other)

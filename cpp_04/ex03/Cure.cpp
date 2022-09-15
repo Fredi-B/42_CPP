@@ -2,18 +2,18 @@
 
 Cure::Cure(void) : AMateria("cure")
 {
-	std::cout << "Cure materia constructed" << std::endl;
+	// std::cout << "Cure materia constructed" << std::endl;
 }
 
 Cure::Cure(const Cure &other)
 {
 	*this = other;
-	std::cout << "Copy of Cure materia constructed" << std::endl;
+	// std::cout << "Copy of Cure materia constructed" << std::endl;
 }
 
 Cure::~Cure(void)
 {
-	std::cout << "Cure materia destructed" << std::endl;
+	// std::cout << "Cure materia destructed" << std::endl;
 }
 
 Cure	&Cure::operator=(const Cure &other)

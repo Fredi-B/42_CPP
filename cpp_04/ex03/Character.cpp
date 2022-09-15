@@ -2,7 +2,7 @@
 
 Character::Character(void) : name("Character")
 {
-	std::cout << "Character materia constructed" << std::endl;
+	// std::cout << "Character materia constructed" << std::endl;
 	for (int i = 0; i < 4; i++)
 		this->inventory[i] = NULL;
 	for (int i = 0; i < 1000; i++)
@@ -11,7 +11,7 @@ Character::Character(void) : name("Character")
 
 Character::Character(std::string name) : name(name)
 {
-	std::cout << "Character materia constructed" << std::endl;
+	// std::cout << "Character materia constructed" << std::endl;
 	for (int i = 0; i < 4; i++)
 		this->inventory[i] = NULL;
 	for (int i = 0; i < 1000; i++)
@@ -21,7 +21,7 @@ Character::Character(std::string name) : name(name)
 Character::Character(const Character &other)
 {
 	*this = other;
-	std::cout << "Copy of Character materia constructed" << std::endl;
+	// std::cout << "Copy of Character materia constructed" << std::endl;
 }
 
 Character::~Character(void)
@@ -42,7 +42,7 @@ Character::~Character(void)
 			this->floor[i] = NULL;
 		}
 	}
-	std::cout << "Character materia destructed" << std::endl;
+	// std::cout << "Character materia destructed" << std::endl;
 }
 
 Character	&Character::operator=(const Character &other)
@@ -86,7 +86,7 @@ void	Character::equip(AMateria *m)
 		if (this->inventory[i] == NULL)
 		{
 			this->inventory[i] = m;
-			std::cout << this->getName() << " put " << m->getType() << " in invetory slot no. " << i << std::endl;
+			// std::cout << this->getName() << " put " << m->getType() << " in invetory slot no. " << i << std::endl;
 			return ;
 		}
 	}

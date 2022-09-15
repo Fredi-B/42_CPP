@@ -2,7 +2,7 @@
 
 NAME = interface
 CPP = c++
-CPP_FLAGS= -Wall -Wextra -Werror
+CPP_FLAGS= -Wall -Wextra -Werror -g
 
 CPP_FILES = main.cpp AMateria.cpp Ice.cpp Cure.cpp Character.cpp MateriaSource.cpp
 

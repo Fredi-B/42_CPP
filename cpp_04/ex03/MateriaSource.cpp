@@ -4,13 +4,13 @@ MateriaSource::MateriaSource(void)
 {
 	for (int i = 0; i < 4; i++)
 		this->templates[i] = NULL;
-	std::cout << "MateriaSource constructed" << std::endl;
+	// std::cout << "MateriaSource constructed" << std::endl;
 }
 
 MateriaSource::MateriaSource(const MateriaSource &other)
 {
 	*this = other;
-	std::cout << "Copy of MateriaSource constructed" << std::endl;
+	// std::cout << "Copy of MateriaSource constructed" << std::endl;
 }
 
 MateriaSource::~MateriaSource(void)
@@ -20,7 +20,7 @@ MateriaSource::~MateriaSource(void)
 		if (this->templates[i] != NULL)
 			delete this->templates[i];
 	}
-	std::cout << "MateriaSource destructed" << std::endl;
+	// std::cout << "MateriaSource destructed" << std::endl;
 }
 
 MateriaSource	&MateriaSource::operator=(const MateriaSource &other)

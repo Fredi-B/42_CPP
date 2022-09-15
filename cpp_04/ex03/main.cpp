@@ -6,23 +6,43 @@
 
 int main(void)
 {
-	IMateriaSource *src = new MateriaSource();
+	// IMateriaSource *src = new MateriaSource();
+	// src->learnMateria(new Ice());
+	// src->learnMateria(new Cure());
+
+	// ICharacter* me = new Character("me");
+	
+	// AMateria* tmp;
+	// tmp = src->createMateria("ice");
+	// me->equip(tmp);
+	// tmp = src->createMateria("cure");
+	// me->equip(tmp);
+	
+	// ICharacter* bob = new Character("bob");
+	// me->use(0, *bob);
+	// me->use(1, *bob);
+	// delete bob;
+	// delete me;
+	// delete src;
+
+
+	Character	*bob = new Character("bob");
+	MateriaSource	*src = new MateriaSource();
 	src->learnMateria(new Ice());
 	src->learnMateria(new Cure());
-
-	ICharacter* me = new Character("me");
-	
-	AMateria* tmp;
-	tmp = src->createMateria("ice");
-	me->equip(tmp);
+	AMateria	*tmp;
 	tmp = src->createMateria("cure");
-	me->equip(tmp);
-	
-	ICharacter* bob = new Character("bob");
-	me->use(0, *bob);
-	me->use(1, *bob);
+	AMateria	*tmp2(tmp);
+	bob->equip(tmp);
+	bob->equip(tmp2);
+	Character	*jim = new Character("jim");
+	jim = bob;
+	jim->use(0, *bob);
+	bob->use(1, *jim);
 	delete bob;
-	delete me;
 	delete src;
+	delete jim;
+
+	// system("leaks interface");
 	return 0;
 }
