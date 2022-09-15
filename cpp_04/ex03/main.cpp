@@ -25,19 +25,20 @@ int main(void)
 	// delete me;
 	// delete src;
 
-
 	Character	*bob = new Character("bob");
-	MateriaSource	*src = new MateriaSource();
+	IMateriaSource	*src = new MateriaSource();
 	src->learnMateria(new Ice());
 	src->learnMateria(new Cure());
 	AMateria	*tmp;
 	tmp = src->createMateria("cure");
-	AMateria	*tmp2(tmp);
+	AMateria	*tmp2;
+	tmp2 = src->createMateria("ice");
 	bob->equip(tmp);
 	bob->equip(tmp2);
 	Character	*jim = new Character("jim");
-	jim = bob;
+	*jim = *bob;
 	jim->use(0, *bob);
+	bob->use(0, *jim);
 	bob->use(1, *jim);
 	delete bob;
 	delete src;
