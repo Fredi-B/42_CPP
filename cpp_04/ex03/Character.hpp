@@ -18,6 +18,11 @@ public:
 	void				unequip(int idx);
 	void				use(int idx, ICharacter& target);
 
+	void	empty_floor(void);
+	void	empty_inventory(void);
+
+
+
 private:
 	std::string	name;
 	AMateria	*inventory[4];
