@@ -50,25 +50,17 @@ Character	&Character::operator=(const Character &other)
 	if (this != &other)
 	{
 		this->name = other.name;
+		empty_inventory();
+		empty_floor();
 		for (int i = 0; i < 4; i++)
 		{
-			if (this->inventory[i] != NULL)
-			{
-				delete inventory[i];
-				this->inventory[i] = NULL;
-			}
 			if (other.inventory[i] != NULL)
-				this->inventory[i] = other.inventory[i]->clone();
+			this->inventory[i] = other.inventory[i]->clone();
 		}
 		for (int i = 0; i < 1000; i++)
 		{
-			if (this->floor[i] != NULL)
-			{
-				delete floor[i];
-				this->floor[i] = NULL;
-			}
-			if (other.inventory[i] != NULL)
-				this->floor[i] = other.floor[i]->clone();
+			if (other.floor[i] != NULL)
+			this->floor[i] = other.floor[i]->clone();
 		}
 	}
 	return (*this);
@@ -114,4 +106,31 @@ void	Character::use(int idx, ICharacter &target)
 {
 	if (idx >= 0 && idx < 4 && this->inventory[idx] != NULL)
 		this->inventory[idx]->use(target);
+}
+
+void	Character::empty_inventory(void)
+{
+	for (int i = 0; i < 4; i++)
+	{
+	if (this->inventory[i] != nullptr)
+	{
+	std::cout << "empty_inventory" << std::endl;
+	delete (this->inventory[i]);
+	this->inventory[i] = nullptr;
+	}
+	}
+}
+	
+
+void	Character::empty_floor(void)
+{
+	for (int i = 0; i < 1000; i++)
+	{
+	if (this->floor[i] != nullptr)
+	{
+	std::cout << "empty_mapOfLostStuff" << std::endl;
+	delete (this->floor[i]);
+	this->floor[i] = nullptr;
+	}
+	}
 }
