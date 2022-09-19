@@ -4,7 +4,7 @@ NAME = form
 CPP = c++
 CPP_FLAGS= -Wall -Wextra -Werror
 
-CPP_FILES = main.cpp Bureaucrat.cpp Form.cpp
+CPP_FILES = main.cpp Bureaucrat.cpp Form.cpp ShrubberyCreationForm.cpp RobotomyRequestForm.cpp PresidentialPardonForm.cpp
 
 O_DIR = o_files
 OBJECTS := $(patsubst %.cpp,%.o,$(CPP_FILES))
