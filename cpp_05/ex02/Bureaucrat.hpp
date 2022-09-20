@@ -24,6 +24,7 @@ public:
 	void	decrement(void);
 
 	void	signForm(Form &form);
+	void	executeForm(const Form &form);
 
 	class	GradeTooHighException : public std::exception
 	{
