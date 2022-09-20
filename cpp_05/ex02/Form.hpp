@@ -22,7 +22,10 @@ public:
 	int			getGradeToSign(void) const;
 	int			getGradeToExec(void) const;
 
-	void		beSigned(const Bureaucrat &x);
+	void			beSigned(const Bureaucrat &x);
+	virtual bool	execute(const Bureaucrat &executor) const = 0;
+	bool			checkRequirements(const Bureaucrat &executor) const;
+
 
 	class GradeTooHighException : public std::exception
 	{
@@ -31,6 +34,12 @@ public:
 	};
 
 	class GradeTooLowException : public std::exception
+	{
+	public:
+		const char	*what() const throw();
+	};
+
+	class FormNotSignedException : public std::exception
 	{
 	public:
 		const char	*what() const throw();

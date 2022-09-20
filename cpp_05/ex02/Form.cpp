@@ -28,21 +28,36 @@ Form	&Form::operator=(const Form &other)
 	return (*this);
 }
 
-	std::string	Form::getName(void) const	{ return (this->_name); }
+std::string	Form::getName(void) const	{ return (this->_name); }
+bool		Form::getIsSigned(void) const { return (this->_isSigned); }
+int			Form::getGradeToSign(void) const { return (this->_gradeToSign); }
+int			Form::getGradeToExec(void) const { return (this->_gradeToExec); }
 
-	bool		Form::getIsSigned(void) const { return (this->_isSigned); }
+void	Form::beSigned(const Bureaucrat &x)
+{
+	if (x.getGrade() <= this->getGradeToSign())
+		this->_isSigned = true;
+	else
+		throw Form::GradeTooLowException();
+}
 
-	int			Form::getGradeToSign(void) const { return (this->_gradeToSign); }
-
-	int			Form::getGradeToExec(void) const { return (this->_gradeToExec); }
-
-	void		Form::beSigned(const Bureaucrat &x)
+bool	Form::checkRequirements(const Bureaucrat &executor) const
+{
+	try
 	{
-		if (x.getGrade() <= this->getGradeToSign())
-			this->_isSigned = true;
-		else
+		if (this->getIsSigned() == false)
+			throw Form::FormNotSignedException();
+		else if (executor.getGrade() > this->getGradeToExec())
 			throw Form::GradeTooLowException();
 	}
+	catch(const std::exception &e)
+	{
+		std::cerr << "Exception caught: " << executor << " couldn't execute " 
+		<< this->getName() << " because " << e.what() << std::endl;
+		return (false);
+	}
+	return (true);
+}
 
 const char	*Form::GradeTooHighException::what() const throw()
 {
@@ -52,6 +67,11 @@ const char	*Form::GradeTooHighException::what() const throw()
 const char	*Form::GradeTooLowException::what() const throw()
 {
 	return ("Grade too low");
+}
+
+const char	*Form::FormNotSignedException::what() const throw()
+{
+	return ("Form not signed");
 }
 
 std::ostream	&operator<<(std::ostream &o, const Form &f)
