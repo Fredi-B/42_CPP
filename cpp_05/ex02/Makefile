@@ -1,6 +1,6 @@
 # _*_ Makefile _*_
 
-NAME = form
+NAME = forms
 CPP = c++
 CPP_FLAGS= -Wall -Wextra -Werror
 
