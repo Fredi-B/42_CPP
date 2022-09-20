@@ -9,6 +9,7 @@ public:
 	ClapTrap(void);
 	ClapTrap(const ClapTrap &other);
 	ClapTrap(std::string name);
+	ClapTrap(std::string name, unsigned int hit_points, unsigned int energy_points, unsigned int attack_damage);
 	~ClapTrap(void);
 /* --------------------------------------------------------------------------------- */
 	ClapTrap	&operator=(const ClapTrap &other);

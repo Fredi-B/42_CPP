@@ -10,6 +10,12 @@ ClapTrap::ClapTrap(std::string name) : name(name), hit_points(10), energy_points
 	std::cout << "Name constructor called" << std::endl;
 }
 
+ClapTrap::ClapTrap(std::string name, unsigned int hit_points, unsigned int energy_points, unsigned int attack_damage)
+: name(name), hit_points(hit_points),energy_points(energy_points), attack_damage(attack_damage)
+{
+	std::cout << "Problem constructor called" << std::endl;
+}
+
 ClapTrap::ClapTrap(const ClapTrap &other)
 {
 	*this = other;
