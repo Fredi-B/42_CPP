@@ -38,20 +38,20 @@ FragTrap	&FragTrap::operator=(const FragTrap &other)
 	return (*this);
 }
 /* `````````````````````````````````````````````````````````````````````````````````` */
-void	FragTrap::attack(const std::string &target)
-{
-	if (this->getEnergyPoints() > 0 && this->getHitPoints() > 0)
-	{
-		std::cout << "FragTrap " << this->getName() << " attacks " 
-		<< target << ", causing " << this->getAttackDamage() << " points of damage!" 
-		<< std::endl;
-		this->setEnergyPoints(getEnergyPoints() - 1);
-	}
-	else
-	{
-		std::cout << this->getName() << " can't attack! Peace " << target << std::endl;
-	}
-}
+// void	FragTrap::attack(const std::string &target)
+// {
+// 	if (this->getEnergyPoints() > 0 && this->getHitPoints() > 0)
+// 	{
+// 		std::cout << "FragTrap " << this->getName() << " attacks " 
+// 		<< target << ", causing " << this->getAttackDamage() << " points of damage!" 
+// 		<< std::endl;
+// 		this->setEnergyPoints(getEnergyPoints() - 1);
+// 	}
+// 	else
+// 	{
+// 		std::cout << this->getName() << " can't attack! Peace " << target << std::endl;
+// 	}
+// }
 
 void	FragTrap::highFivesGuys(void)
 {
