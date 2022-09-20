@@ -83,7 +83,7 @@ void	ClapTrap::beRepaired(unsigned int amount)
 }
 
 /* `````````````````````````````````````````````````````````````````````````````````` */
-void	ClapTrap::setName(std::string name) {this->name = name;}
+void	ClapTrap::setName(std::string _name) {this->name = _name;}
 void	ClapTrap::setHitPoints(unsigned int amount) {this->hit_points = amount;}
 void	ClapTrap::setEnergyPoints(unsigned int amount) {this->energy_points = amount;}
 void	ClapTrap::setAttackDamage(unsigned int amount) {this->attack_damage = amount;}
