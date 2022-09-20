@@ -1,21 +1,13 @@
 #include "ScavTrap.hpp"
 
-ScavTrap::ScavTrap(void) : ClapTrap()
+ScavTrap::ScavTrap(void) : ClapTrap("noname", 100, 50, 20)
 {
 	std::cout << "ScavTrap constructed" << std::endl;
-	this->name = "noname";
-	this->hit_points = 100;
-	this->energy_points = 50;
-	this->attack_damage = 20;
 }
 
-ScavTrap::ScavTrap(std::string name) : ClapTrap::ClapTrap(name)
+ScavTrap::ScavTrap(std::string name) : ClapTrap::ClapTrap(name, 100, 50, 20)
 {
 	std::cout << "ScavTrap " << name << " constructed" << std::endl;
-	this->name = name;
-	this->hit_points = 100;
-	this->energy_points = 50;
-	this->attack_damage = 20;
 }
 
 ScavTrap::ScavTrap(const ScavTrap &other) : ClapTrap::ClapTrap(other)

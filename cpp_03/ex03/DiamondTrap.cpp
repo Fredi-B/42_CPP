@@ -1,23 +1,16 @@
 #include "DiamondTrap.hpp"
 
-DiamondTrap::DiamondTrap(void) : ClapTrap()
+DiamondTrap::DiamondTrap(void) : ClapTrap("noname_clap_name", 100, 50, 30)
 {
 	std::cout << "DiamondTrap constructed" << std::endl;
 	this->name = "noname";
-	this->ClapTrap::name = this->name + "_clap_name";
-	this->hit_points = FragTrap::hit_points;
-	this->energy_points = ScavTrap::energy_points;
-	this->attack_damage = FragTrap::attack_damage;
 }
 
 DiamondTrap::DiamondTrap(std::string name)
+: ClapTrap(name + "_clap_name", 100, 50, 30)
 {
 	std::cout << "DiamondTrap " << name << " constructed" << std::endl;
 	this->name = name;
-	this->ClapTrap::name = name + "_clap_name";
-	this->hit_points = FragTrap::hit_points;
-	this->energy_points = ScavTrap::energy_points;
-	this->attack_damage = FragTrap::attack_damage;
 }
 
 DiamondTrap::DiamondTrap(const DiamondTrap &other) : ClapTrap(other), ScavTrap(other), FragTrap(other)
