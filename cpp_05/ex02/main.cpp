@@ -1,13 +1,14 @@
 #include "Bureaucrat.hpp"
 #include "Form.hpp"
+#include "ShrubberyCreationForm.hpp"
 
 int	main(void)
 {
-	Bureaucrat	b("bini", 40);
-	Form		f("formi", 40, 36);
-	std::cout << f << std::endl;
+	std::cout << std::endl << "-------shrubbery test--------" << std::endl;
+	Bureaucrat	b("bini", 137);
+	ShrubberyCreationForm	f("formi");
 	b.signForm(f);
-	std::cout << f << std::endl;
-	b.signForm(f);
+	b.executeForm(f);
+
 	return (0);
 }
