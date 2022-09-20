@@ -4,6 +4,7 @@ DiamondTrap::DiamondTrap(void) : ClapTrap()
 {
 	std::cout << "DiamondTrap constructed" << std::endl;
 	this->name = "noname";
+	this->ClapTrap::name = this->name + "_clap_name";
 	this->hit_points = FragTrap::hit_points;
 	this->energy_points = ScavTrap::energy_points;
 	this->attack_damage = FragTrap::attack_damage;
