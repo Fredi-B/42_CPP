@@ -45,11 +45,6 @@ DiamondTrap	&DiamondTrap::operator=(const DiamondTrap &other)
 }
 /* `````````````````````````````````````````````````````````````````````````````````` */
 
-void	DiamondTrap::attack(const std::string &target)
-{
-	ScavTrap::attack(target);
-}
-
 void	DiamondTrap::whoAmI(void)
 {
 	std::cout << "Name: " << this->name << " | Base name: " << this->ClapTrap::name << std::endl;

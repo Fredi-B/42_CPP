@@ -15,7 +15,6 @@ public:
 DiamondTrap	&operator=(const DiamondTrap &other);
 /* `````````````````````````````````````````````````````````````````````````````````` */
 	void	whoAmI(void);
-	void	attack(const std::string &target);
 /*====================================================================================== */
 private:
 	std::string	name;
