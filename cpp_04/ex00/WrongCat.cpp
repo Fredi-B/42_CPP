@@ -3,7 +3,6 @@
 WrongCat::WrongCat(void)
 {
 	this->type = "WrongCat";
-	this->sound = "WrongMeow";
 	std::cout << "WrongCat constructed" << std::endl;
 }
 

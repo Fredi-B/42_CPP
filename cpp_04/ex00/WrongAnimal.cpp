@@ -3,7 +3,6 @@
 WrongAnimal::WrongAnimal(void)
 {
 	this->type = "WrongAnimaltest";
-	this->sound = "what?";
 	std::cout << "WrongAnimal constructed" << std::endl;
 }
 
