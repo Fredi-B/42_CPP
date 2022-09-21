@@ -56,14 +56,14 @@ void	Bureaucrat::signForm(Form &form)
 		}
 		catch(const std::exception& e)
 		{
-			std::cerr <<  *this << " couldn't sign " << form << " because " << e.what() << std::endl;
+			std::cerr << "Exception caught: " <<  *this << " couldn't sign " << form << " because " << e.what() << std::endl;
 		}
 }
 
 void	Bureaucrat::executeForm(const Form &form)
 {
 	if (form.execute(*this) == true)
-		std::cout << *this << " executed " << form << std::endl;
+		std::cout << this->getName() << " executed " << form.getName() << std::endl;
 	else
 		std::cout << this->getName() << " can't execute " << form.getName() << std::endl;
 }
