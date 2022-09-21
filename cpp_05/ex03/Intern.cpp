@@ -29,9 +29,10 @@ static Form	*makePresidential(std::string target)
 Form	*Intern::makeForm(std::string name, std::string target)
 {
 	Form	*(*func[3])(std::string target) = {&makeShrubbery, \
-																&makeRobotomy, \
-																&makePresidential};
+											&makeRobotomy, \
+											&makePresidential};
 	std::string	form_types[3] = {"shrubbery creation", "robotomy request", "presidential pardon"};
+
 	for (int i = 0; i < 3; i++)
 	{
 		if (form_types[i] == name)
@@ -40,6 +41,6 @@ Form	*Intern::makeForm(std::string name, std::string target)
 			return ((*func[i])(target));
 		}
 	}
-	std::cout << "There's no form called " << name << std::endl;
+	std::cout << "Intern couldn't create because " << name << " is made up" << std::endl;
 	return (NULL);
 }
