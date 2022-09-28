@@ -39,6 +39,18 @@ private:
 	bool	isFloat(void);
 	bool	isDouble(void);
 
+	void	convertType(void);
+	void	convertFromChar(void);
+	void	convertFromInt(void);
+	void	convertFromFloat(void);
+	void	convertFromDouble(void);
+
+	void	printTypes(void);
+	void	printChar(void);
+	void	printInt(void);
+	void	printFloat(void);
+	void	printDouble(void);
+
 	class NotAScalarTypeException : public std::exception
 	{
 	public:

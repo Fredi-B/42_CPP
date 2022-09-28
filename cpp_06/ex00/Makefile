@@ -1,6 +1,6 @@
 # _*_ Makefile _*_
 
-NAME = scalar
+NAME = convert
 CPP = c++
 CPP_FLAGS= -Wall -Wextra -Werror
 
