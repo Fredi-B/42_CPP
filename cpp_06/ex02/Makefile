@@ -4,7 +4,7 @@ NAME = identify
 CPP = c++
 CPP_FLAGS= -Wall -Wextra -Werror
 
-CPP_FILES = main.cpp
+CPP_FILES = main.cpp A.cpp B.cpp C.cpp Base.cpp
 
 O_DIR = o_files
 OBJECTS := $(patsubst %.cpp,%.o,$(CPP_FILES))
