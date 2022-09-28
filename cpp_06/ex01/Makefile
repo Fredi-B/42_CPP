@@ -4,7 +4,7 @@ NAME = serial
 CPP = c++
 CPP_FLAGS= -Wall -Wextra -Werror
 
-CPP_FILES = main.cpp
+CPP_FILES = main.cpp Data.cpp
 
 O_DIR = o_files
 OBJECTS := $(patsubst %.cpp,%.o,$(CPP_FILES))
