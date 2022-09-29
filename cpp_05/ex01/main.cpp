@@ -13,7 +13,6 @@ int	main(void)
 		std::cout << f << std::endl;
 		b.signForm(f);
 
-
 		std::cout << std::endl << "------sign formi again--------" << std::endl;
 		b.signForm(f);
 		std::cout << f << std::endl;
