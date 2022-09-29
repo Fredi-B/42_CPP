@@ -19,7 +19,7 @@ int	main(void)
 	{
 		std::cerr << "Exception caught " << e.what() << std::endl;
 	}
-		try
+	try
 	{
 		Bureaucrat pia("Pia", 1);
 	}
@@ -37,9 +37,9 @@ int	main(void)
 	}
 
 	std::cout << "-------Pia increments----------" << std::endl;
-	Bureaucrat pia("Pia", 2);
 	try
 	{
+		Bureaucrat pia("Pia", 2);
 		std::cout << pia << std::endl;
 		pia.increment();
 		std::cout << pia << std::endl;
@@ -52,9 +52,9 @@ int	main(void)
 	}
 
 	std::cout << "-------Peter decrements----------" << std::endl;
-	Bureaucrat peter("Peter", 149);
 	try
 	{
+		Bureaucrat peter("Peter", 149);
 		std::cout << peter << std::endl;
 		peter.decrement();
 		std::cout << peter << std::endl;
