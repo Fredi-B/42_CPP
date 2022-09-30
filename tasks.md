@@ -1,3 +1,5 @@
 # To-do
 
-[]	nanf etc. bei float & double printen
+[x]	nanf etc. bei float & double printen
+
+[x] fct as parameter in fct
