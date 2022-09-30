@@ -13,7 +13,6 @@
 class Converter
 {
 public:
-	Converter();
 	Converter(char *input);
 	Converter(const Converter &other);
 	~Converter();
@@ -26,6 +25,8 @@ public:
 	double	getDouble(void) const;
 
 private:
+	Converter();
+	
 	std::string	_input;
 	int			_input_type;
 	char		_char_literal;
