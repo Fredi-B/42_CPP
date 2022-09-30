@@ -1,6 +1,6 @@
 # _*_ Makefile _*_
 
-NAME = identify
+NAME = array
 CPP = c++
 CPP_FLAGS= -Wall -Wextra -Werror -std=c++98
 
