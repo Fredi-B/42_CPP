@@ -5,7 +5,6 @@ Converter::Converter() {}
 Converter::Converter(char *input) : _input(input)
 {
 	this->_input_type = this->detectType();
-	std::cout << "iput_type: " << this->_input_type << std::endl;
 	this->convertType();
 	this->printTypes();
 }
