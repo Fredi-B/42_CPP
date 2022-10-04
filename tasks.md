@@ -4,3 +4,5 @@
 
 [x] fct as parameter in fct
 [x] = overload
+
+[] minmax algorithm to get min & max 
