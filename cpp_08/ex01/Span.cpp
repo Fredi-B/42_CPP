@@ -1,5 +1,4 @@
 #include "Span.hpp"
-#include <iostream>
 
 
 Span::Span() {}
@@ -37,7 +36,7 @@ void	Span::addNumber(int number)
 
 int	randomGenerator(void)
 {
-	return (arc4random() % 1000);
+	return (arc4random() % 100000000);
 }
 
 void	Span::addManyNumbers(int amount)
@@ -63,15 +62,14 @@ int	Span::getNumber(int index) const
 
 int	Span::shortestSpan(void) const
 {
+	if (this->_currentSize < 2)
+		throw NotEnoughEntriesException();
+
 	int	shortest = INT32_MAX;
 	std::vector<int>	copy = this->_storage;
 	std::vector<int>::iterator		ite = copy.end();
 
-	if (this->_currentSize < 2)
-		throw NotEnoughEntriesException();
 	std::sort(copy.begin(), ite);
-	for (int i = 0; i < 100; i++)
-		std::cout << copy[i] << std::endl;
 	for (std::vector<int>::iterator it = copy.begin(); it + 1 != ite; it++)
 	{
 		if (*(it + 1) - *it < shortest)
