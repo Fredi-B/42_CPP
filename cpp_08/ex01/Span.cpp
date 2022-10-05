@@ -78,6 +78,16 @@ int	Span::shortestSpan(void) const
 	return (shortest);
 }
 
+int	Span::longestSpan(void) const
+{
+	if (this->_currentSize < 2)
+		throw NotEnoughEntriesException();
+
+	int	smallest =  *std::min_element(this->_storage.begin(), this->_storage.end());
+	int	biggest = *std::max_element(this->_storage.begin(), this->_storage.end());
+	return (biggest - smallest);
+}
+
 const char	*Span::StorageFullException::what() const throw()
 {
 	return ("Storage is full");
