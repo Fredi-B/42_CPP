@@ -48,7 +48,7 @@ public:
 		return (*this);
 	}
 
-	T	&operator[](size_t idx)
+	T	&operator[](unsigned int idx)
 	{
 		if (idx > this->_size || this->t_array == NULL)
 			throw OutOfBoundException();
