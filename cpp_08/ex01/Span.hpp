@@ -24,7 +24,7 @@ public:
 	int		getNumber(int index) const;
 
 	int		shortestSpan(void) const;
-	int		longestSpan(void) const;
+	long long	longestSpan(void) const;
 
 	class	StorageFullException : public std::exception
 	{
@@ -43,7 +43,7 @@ public:
 	public:
 		const char	*what() const throw();
 	};
-	
+
 private:
 	Span(void);
 };

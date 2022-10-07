@@ -77,7 +77,7 @@ int	Span::shortestSpan(void) const
 	return (shortest);
 }
 
-int	Span::longestSpan(void) const
+long long	Span::longestSpan(void) const
 {
 	if (this->_currentSize < 2)
 		throw NotEnoughEntriesException();
