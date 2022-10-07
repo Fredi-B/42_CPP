@@ -22,6 +22,7 @@ public:
 
 	Array(const Array &other)
 	{
+		this->t_array = NULL;
 		*this = other;
 	}
 
