@@ -5,4 +5,6 @@
 [x] fct as parameter in fct
 [x] = overload
 
-[] minmax algorithm to get min & max 
+[x] minmax algorithm to get min & max 
+[] typename links alf durchgehen
+[x] tests schreiben
