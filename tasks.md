@@ -6,5 +6,5 @@
 [x] = overload
 
 [x] minmax algorithm to get min & max 
-[] typename links alf durchgehen
+[x] typename links alf durchgehen
 [x] tests schreiben
