@@ -1,0 +1,1 @@
+Error: wrong number of arguments. Use: ./btc input.txt
