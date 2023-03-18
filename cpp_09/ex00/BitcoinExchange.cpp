@@ -1,28 +1,16 @@
 #include "BitcoinExchange.hpp"
 
-BitcoinExchange::BitcoinExchange(std::ifstream &input, std::ifstream &data)
+BitcoinExchange::BitcoinExchange(std::ifstream &input, std::ifstream &data) : input(input)
 {
     std::string next_line;
 
     // skip first line
-    std::getline(input, next_line);
     std::getline(data, next_line);
     int i = 0;
     while (std::getline(data, next_line))
     {
-        this->fill_exchange_rate(next_line, ",");
+        this->fillExchangeRate(next_line, ",");
         i++;
-        if (i > 500)
-            break ;
-    }
-    //std::cout << this->exchange_rate.find("2011-01-03")->second << std::endl;
-    //std::cout << this->exchange_rate.find("2011-01-03")->second * 3 << std::endl;
-
-    
-    while (std::getline(data, next_line))
-    {
-        std::cout << next_line << std::endl;
-        break ;
     }
 }
 
@@ -30,7 +18,7 @@ BitcoinExchange::~BitcoinExchange()
 {
 }
 
-void BitcoinExchange::fill_exchange_rate(std:: string line, std::string delim)
+void BitcoinExchange::fillExchangeRate(std:: string line, std::string delim)
 {
     std::string         _date;
     std::string         _value_string;
@@ -45,9 +33,30 @@ void BitcoinExchange::fill_exchange_rate(std:: string line, std::string delim)
     magical_converter_stream << _value_string;
     magical_converter_stream >> data.second;
     this->exchange_rate.insert(data);
-        std::cout << data.second << std::endl;
-
-        std::cout << this->exchange_rate.end()->second << std::endl;
-//    std::cout << this->exchange_rate.end()->second * 3 << std::endl;
     return ;
 }
+
+double  BitcoinExchange::getAmount(std::string date)
+{
+
+}
+
+//copilot
+// std::pair<std::string, double>  BitcoinExchange::getExchangeRate(std::string date)
+// {
+//     std::pair<std::string, double>  data;
+//     std::map<std::string, double>::iterator it = this->exchange_rate.begin();
+//     while (it != this->exchange_rate.end())
+//     {
+//         if (it->first == date)
+//         {
+//             data.first = it->first;
+//             data.second = it->second;
+//             return (data);
+//         }
+//         it++;
+//     }
+//     data.first = "Error";
+//     data.second = -1;
+//     return (data);
+// }

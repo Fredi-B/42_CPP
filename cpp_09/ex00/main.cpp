@@ -9,7 +9,14 @@ int main(int argc, char** argv)
     
     if (!file_check(argc, input, data))
         return (1);
-    BitcoinExchange(input, data);
+    BitcoinExchange ftx(input, data);
+    /* Iterate through ftx->exchange_rate and printing second */
+    std::map<std::string, double>::iterator it = ftx.getexchange_rate.begin();
+    while (it != ftx.exchange_rate.end())
+    {
+        std::cout << it->first << " and now second " << it->second << std::endl;
+        it++;
+    }
 
 
     return (0);
