@@ -90,6 +90,8 @@ bool    isValidDate(std::string date)
         if (day > 30)
             return (false);
     }
+    if (year < 2009 || (year == 2009 && month == 1 && day == 1))
+        return (false);
     return (true);
 }
 
