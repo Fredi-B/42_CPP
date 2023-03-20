@@ -67,6 +67,7 @@ bool    isValidDate(std::string date)
     magical_converter_stream.clear();
     magical_converter_stream << date.substr(8, 2);
     magical_converter_stream >> day;
+    magical_converter_stream.clear();
     if (month < 1 || month > 12)
         return (false);
     if (day < 1 || day > 31)

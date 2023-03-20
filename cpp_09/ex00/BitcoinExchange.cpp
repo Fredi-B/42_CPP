@@ -32,6 +32,7 @@ void BitcoinExchange::fillExchangeRate(std:: string line, std::string delim)
         _value_string = _value_string.substr(0, 9);
     magical_converter_stream << _value_string;
     magical_converter_stream >> data.second;
+    magical_converter_stream.clear();
     this->exchange_rate.insert(data);
     return ;
 }
