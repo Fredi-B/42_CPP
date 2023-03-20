@@ -2,6 +2,7 @@
 #include "inputCheck.hpp"
 
 std::pair<std::string, double>  getInputData(std::string next_line, std::string delim);
+bool    foundInData(std::string date, std::map<std::string, double>::const_iterator it, std::map<std::string, double>::const_iterator it_end);
 
 int main(int argc, char** argv)
 {
@@ -14,9 +15,9 @@ int main(int argc, char** argv)
         return (1);
 
     BitcoinExchange ftx(data);
+    std::map<std::string, double>::const_iterator it;
+    std::map<std::string, double>::const_iterator it_end = ftx.endExchangeRate();
 
-    /* Read data from input file */
-    std::map<std::string, double>::const_iterator it = ftx.beginExchangeRate();
     std::getline(input, next_line); // skip first line
     while (std::getline(input, next_line))
     {
@@ -27,25 +28,18 @@ int main(int argc, char** argv)
         it = ftx.beginExchangeRate();
         while (it != ftx.endExchangeRate())
         {
-            if ((input_pair.first == it->first))
-            {
-                std::cout << it->first << " => " << input_pair.second << " = " << input_pair.second * it->second << std::endl;
-                break ;
-            }
-            if (input_pair.first > it->first)
+            if (foundInData(input_pair.first, it, it_end))
             {
                 std::cout << input_pair.first << " => " << input_pair.second << " = " << input_pair.second * it->second << std::endl;
                 break ;
             }
-            //std::cout << it->first << " and now second " << it->second << std::endl;
             it++;
         }
-
-        // std::cout << input_pair.first << " and now second " << input_pair.second << std::endl;
+        if (it == it_end)
+        {
+            std::cout << input_pair.first << " => " << input_pair.second << " = " << input_pair.second * (--it)->second << std::endl;
+        }
     }
-
-
-
     return (0);
 }
 
@@ -64,4 +58,22 @@ std::pair<std::string, double>  getInputData(std::string next_line, std::string 
     magical_converter_stream << _amount_string;
     magical_converter_stream >> data.second;
     return (data);
+}
+
+bool    foundInData(std::string date, std::map<std::string, double>::const_iterator it, std::map<std::string, double>::const_iterator it_end)
+{
+    if (date == it->first)
+        return (true);
+    if (++it != it_end) // it++: check if next entry is later than input date
+    {
+        int data_year = std::stoi(it->first.substr(0, 4));
+        int data_month = std::stoi(it->first.substr(5, 2));
+        int data_day = std::stoi(it->first.substr(8, 2));
+        int input_year = std::stoi(date.substr(0, 4));
+        int input_month = std::stoi(date.substr(5, 2));
+        int input_day = std::stoi(date.substr(8, 2));
+        if (input_year <= data_year && input_month <= data_month && input_day <= data_day)
+            return (true);
+    }
+    return (false);
 }

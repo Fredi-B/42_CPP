@@ -1,7 +1,7 @@
 # _*_ Makefile _*_
 
 NAME = btc
-CPP = c++
+CPP = c++ -g
 CPP_FLAGS= -Wall -Wextra -Werror -std=c++98
 
 CPP_FILES = main.cpp BitcoinExchange.cpp inputCheck.cpp
