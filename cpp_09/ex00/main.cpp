@@ -62,17 +62,33 @@ std::pair<std::string, double>  getInputData(std::string next_line, std::string 
 
 bool    foundInData(std::string date, std::map<std::string, double>::const_iterator it, std::map<std::string, double>::const_iterator it_end)
 {
+    int data_year, data_month, data_day;
+    int input_year, input_month, input_day;
+    std::stringstream   magical_converter_stream;
+
     if (date == it->first)
         return (true);
     if (++it != it_end) // it++: check if next entry is later than input date
     {
-        int data_year = std::stoi(it->first.substr(0, 4));
-        int data_month = std::stoi(it->first.substr(5, 2));
-        int data_day = std::stoi(it->first.substr(8, 2));
-        int input_year = std::stoi(date.substr(0, 4));
-        int input_month = std::stoi(date.substr(5, 2));
-        int input_day = std::stoi(date.substr(8, 2));
-        if (input_year <= data_year && input_month <= data_month && input_day <= data_day)
+        magical_converter_stream << it->first.substr(0, 4);
+        magical_converter_stream >> data_year;
+        magical_converter_stream.clear();
+        magical_converter_stream << it->first.substr(5, 2);
+        magical_converter_stream >> data_month;
+        magical_converter_stream.clear();
+        magical_converter_stream << it->first.substr(8, 2);
+        magical_converter_stream >> data_day;
+        magical_converter_stream.clear();
+        magical_converter_stream << date.substr(0, 4);
+        magical_converter_stream >> input_year;
+        magical_converter_stream.clear();
+        magical_converter_stream << date.substr(5, 2);
+        magical_converter_stream >> input_month;
+        magical_converter_stream.clear();
+        magical_converter_stream << date.substr(8, 2);
+        magical_converter_stream >> input_day;
+        magical_converter_stream.clear();
+        if (input_year <= data_year && input_month <= data_month && input_day < data_day)
             return (true);
     }
     return (false);
