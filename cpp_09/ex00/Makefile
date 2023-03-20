@@ -4,7 +4,7 @@ NAME = btc
 CPP = c++
 CPP_FLAGS= -Wall -Wextra -Werror -std=c++98
 
-CPP_FILES = main.cpp BitcoinExchange.cpp
+CPP_FILES = main.cpp BitcoinExchange.cpp inputCheck.cpp
 
 O_DIR = o_files
 OBJECTS := $(patsubst %.cpp,%.o,$(CPP_FILES))

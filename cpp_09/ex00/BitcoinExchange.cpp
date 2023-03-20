@@ -1,16 +1,14 @@
 #include "BitcoinExchange.hpp"
 
-BitcoinExchange::BitcoinExchange(std::ifstream &input, std::ifstream &data) : input(input)
+BitcoinExchange::BitcoinExchange(std::ifstream &data)
 {
     std::string next_line;
 
     // skip first line
     std::getline(data, next_line);
-    int i = 0;
     while (std::getline(data, next_line))
     {
         this->fillExchangeRate(next_line, ",");
-        i++;
     }
 }
 
@@ -20,9 +18,9 @@ BitcoinExchange::~BitcoinExchange()
 
 void BitcoinExchange::fillExchangeRate(std:: string line, std::string delim)
 {
-    std::string         _date;
-    std::string         _value_string;
-    std::stringstream   magical_converter_stream;
+    std::string                     _date;
+    std::string                     _value_string;
+    std::stringstream               magical_converter_stream;
     std::pair<std::string, double>  data;
 
     data.first = line.substr(0, line.find(delim));
@@ -36,27 +34,32 @@ void BitcoinExchange::fillExchangeRate(std:: string line, std::string delim)
     return ;
 }
 
-double  BitcoinExchange::getAmount(std::string date)
+std::map<std::string, double>::const_iterator BitcoinExchange::beginExchangeRate(void) const
 {
-
+    return (this->exchange_rate.begin());
 }
 
-//copilot
-// std::pair<std::string, double>  BitcoinExchange::getExchangeRate(std::string date)
-// {
-//     std::pair<std::string, double>  data;
-//     std::map<std::string, double>::iterator it = this->exchange_rate.begin();
-//     while (it != this->exchange_rate.end())
-//     {
-//         if (it->first == date)
-//         {
-//             data.first = it->first;
-//             data.second = it->second;
-//             return (data);
-//         }
-//         it++;
-//     }
-//     data.first = "Error";
-//     data.second = -1;
-//     return (data);
-// }
+std::map<std::string, double>::const_iterator BitcoinExchange::endExchangeRate(void) const
+{
+    return (this->exchange_rate.end());
+}
+
+std::pair<std::string, double>  BitcoinExchange::getExchangeRate(std::string date)
+{
+    std::pair<std::string, double>  data;
+
+    std::map<std::string, double>::iterator it = this->exchange_rate.begin();
+    while (it != this->exchange_rate.end())
+    {
+        if (it->first == date)
+        {
+            data.first = it->first;
+            data.second = it->second;
+            return (data);
+        }
+        it++;
+    }
+    data.first = "Error";
+    data.second = -1;
+    return (data);
+}

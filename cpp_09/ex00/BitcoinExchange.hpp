@@ -10,17 +10,18 @@ class BitcoinExchange
 {   
 private:
     std::map<std::string, double>   exchange_rate;
-    std::ifstream                   &input;
 
     void fillExchangeRate(std:: string line, std::string delim);
     
 
 public:
-    BitcoinExchange(std::ifstream &input, std::ifstream &data);
+    BitcoinExchange(std::ifstream &data);
     ~BitcoinExchange();
 
+    std::map<std::string, double>::const_iterator beginExchangeRate(void) const;
+    std::map<std::string, double>::const_iterator endExchangeRate(void) const;
+
     std::pair<std::string, double>  getExchangeRate(std::string date);
-    double                          getAmount(std::string date);
 };
 
 
