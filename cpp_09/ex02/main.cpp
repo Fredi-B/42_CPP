@@ -31,8 +31,19 @@ void    printResults(PmergeMe<std::multiset<int> > &mergeSet, PmergeMe<std::prio
     std::cout << std::endl;
 
     std::cout << "After: ";
-    for (size_t i = 0; i < mergeSet.getSize(); i++)
-        std::cout << " " << mergeQueue.getSortedElement(mergeQueue, i);
+    mergeQueue.getSize(); // for debugging
+
+    std::multiset<int>::const_iterator it;
+    for (it = mergeSet.begin(mergeSet); it != mergeSet.end(mergeSet); it++)
+    {
+        std::cout << "test" << std::endl;
+
+        // std::cout << " " << *it;
+    }
+
+
+    // for (size_t i = 0; i < mergeSet.getSize(); i++)
+    //     std::cout << " " << mergeSet.getSortedElement(mergeSet, i);
     std::cout << std::endl;
 
     // for (it_set = this->m_set.begin(); it_set != this->m_set.end(); it_set++)

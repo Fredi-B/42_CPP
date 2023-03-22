@@ -12,24 +12,22 @@ template<typename T>
 class   PmergeMe
 {
 public:
-    typedef typename T<int>::container_type::
     PmergeMe(std::vector<int> _sequence);
     PmergeMe(const PmergeMe &other);
     ~PmergeMe();
 
     PmergeMe    &operator=(const PmergeMe &other);
 
-    std::priority_queue::const_iterator begin(PmergeMe<std::priority_queue<int> > mergeQueue);
-    // std::multiset::const_iterator       begin(PmergeMe<std::multiset<int> > mergeSet);
-    // std::priority_queue::const_iterator end(PmergeMe<std::priority_queue<int> > mergeQueue);
-    // std::multiset::const_iterator       end(PmergeMe<std::multiset<int> > mergeSet);
+    std::multiset<int>::const_iterator  &begin(const PmergeMe<std::multiset<int> > &mergeSet) const;
+    std::multiset<int>::const_iterator  &end(const PmergeMe<std::multiset<int> > &mergeSet) const;
 
     void    sort_sequence();
-
+    T       &getSortedSequence(const PmergeMe<std::multiset<int> > &mergeSet) const;
     size_t  getSize();
     int     getSequenceElement(size_t i);
-    int     getSortedElement(size_t i);
+    int     getSortedElement(PmergeMe<std::multiset<int> > &mergeSet, size_t pos);
     float   getSortingTime();
+
 
 private:
     std::vector<int>            sequence;
