@@ -4,7 +4,7 @@ NAME = PmergeMe
 CPP = c++ -g
 CPP_FLAGS= -Wall -Wextra -Werror -std=c++98
 
-CPP_FILES = main.cpp PmergeMe.cpp
+CPP_FILES = main.cpp
 
 O_DIR = o_files
 OBJECTS := $(patsubst %.cpp,%.o,$(CPP_FILES))

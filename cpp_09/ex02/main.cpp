@@ -4,6 +4,7 @@
 bool                isInputCorrect(int argc, char** argv);
 bool                isNumber(std::string arg);
 std::vector<int>    fillSequence(int argc, char **argv);
+void                printResults(PmergeMe<std::multiset<int> > &mergeSet, PmergeMe<std::priority_queue<int> > &mergeQueue);
 
 int main(int argc, char** argv)
 {
@@ -12,12 +13,39 @@ int main(int argc, char** argv)
     if (!isInputCorrect(argc, argv))
         return (1);
     sequence = fillSequence(argc, argv);
-    PmergeMe mergeMe(sequence);
-    mergeMe.fillSet();
-    mergeMe.fillQueue();
-    mergeMe.printResults();
+    PmergeMe<std::multiset<int> >        mergeSet(sequence);
+    PmergeMe<std::priority_queue<int> >  mergeQueue(sequence);
+    mergeSet.sort_sequence();
+    mergeQueue.sort_sequence();
+    printResults(mergeSet, mergeQueue);
     return (0);
 }
+
+void    printResults(PmergeMe<std::multiset<int> > &mergeSet, PmergeMe<std::priority_queue<int> > &mergeQueue)
+{
+    std::multiset<int>::const_iterator  it_set;
+
+    std::cout << "Before:";
+    for (size_t i = 0; i < mergeSet.getSize(); i++)
+        std::cout << " " << mergeSet.getSequenceElement(i);
+    std::cout << std::endl;
+
+    std::cout << "After: ";
+    for (size_t i = 0; i < mergeSet.getSize(); i++)
+        std::cout << " " << mergeQueue.getSortedElement(mergeQueue, i);
+    std::cout << std::endl;
+
+    // for (it_set = this->m_set.begin(); it_set != this->m_set.end(); it_set++)
+    //     std::cout << " " << *it_set;
+    // std::cout << std::endl;
+
+    // std::cout << "Time to process a range of " <<  this->sequence.size() << " elements "\
+    //             << "with std::multiset:       " << this->time_set << " us" << std::endl;
+    // std::cout << "Time to process a range of " <<  this->sequence.size() << " elements "\
+    //             <<"with std::priority_queue: " << this->time_queue << " us" << std::endl;
+
+}
+
 
 std::vector<int>    fillSequence(int argc, char **argv)
 {
