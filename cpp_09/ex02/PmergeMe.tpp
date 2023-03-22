@@ -29,6 +29,8 @@ PmergeMe<T>    &PmergeMe<T>::operator=(const PmergeMe &other)
     return (*this);
 }
 
+/* --------------------- member functions --------------------- */
+
 template<typename T>
 void    PmergeMe<T>::sort_sequence()
 {
@@ -46,20 +48,21 @@ void    PmergeMe<T>::sort_sequence()
     this->sorting_time = ((float)time_taken)/CLOCKS_PER_SEC;
 }
 
+/* ------------------- iterator -------------------- */
+
 template<typename T>
-std::multiset<int>::const_iterator  &PmergeMe<T>::begin(const PmergeMe<std::multiset<int> > &mergeSet) const
+std::multiset<int>::const_iterator  PmergeMe<T>::begin(const PmergeMe<std::multiset<int> > &mergeSet) const
 {
     return (mergeSet.getSortedSequence(mergeSet).begin());
 }
 
 template<typename T>
-std::multiset<int>::const_iterator  &PmergeMe<T>::end(const PmergeMe<std::multiset<int> > &mergeSet) const
+std::multiset<int>::const_iterator  PmergeMe<T>::end(const PmergeMe<std::multiset<int> > &mergeSet) const
 {
     return (mergeSet.getSortedSequence(mergeSet).end());
 }
 
-template<typename T>
-T    &PmergeMe<T>::getSortedSequence(const PmergeMe<std::multiset<int> > &mergeSet) const {return (mergeSet.sorted_sequence);}
+/* --------------------- "setter" --------------------- */
 
 template<typename T>
 void    PmergeMe<T>::addElement(std::multiset<int> &sorted_sequence, size_t i)
@@ -73,6 +76,11 @@ void    PmergeMe<T>::addElement(std::priority_queue<int> &sorted_sequence, size_
     sorted_sequence.push(this->sequence.at(i));
 }
 
+/* --------------------- getter --------------------- */
+
+template<typename T>
+const T    &PmergeMe<T>::getSortedSequence(const PmergeMe<std::multiset<int> > &mergeSet) const {return (mergeSet.sorted_sequence);}
+
 template<typename T>
 size_t  PmergeMe<T>::getSize() {return (this->sequence.size());}
 
@@ -80,39 +88,6 @@ template<typename T>
 int PmergeMe<T>::getSequenceElement(size_t i) {return (this->sequence.at(i));}
 
 template<typename T>
-int PmergeMe<T>::getSortedElement(PmergeMe<std::multiset<int> > &mergeSet, size_t pos)
-{
-    std::multiset<int>::const_iterator it = this->begin(mergeSet);
-    for (size_t i = 0; i <= pos; i++)
-    {
-        std::cout << "test" << std::endl;
-        // it++;
-    }
-    return (*it);
-}
-
-template<typename T>
 float PmergeMe<T>::getSortingTime() {return (this->sorting_time);}
-
-// template<typename T>
-// void    PmergeMe<T>::printResults()
-// {
-//     std::multiset<int>::const_iterator  it_set;
-
-//     std::cout << "Before:";
-//     for (size_t i = 0; i < this->sequence.size(); i++)
-//         std::cout << " " << this->sequence.at(i);
-//     std::cout << std::endl;
-
-//     std::cout << "After: ";
-//     for (it_set = this->m_set.begin(); it_set != this->m_set.end(); it_set++)
-//         std::cout << " " << *it_set;
-//     std::cout << std::endl;
-
-//     std::cout << "Time to process a range of " <<  this->sequence.size() << " elements "\
-//                 << "with std::multiset:       " << this->time_set << " us" << std::endl;
-//     std::cout << "Time to process a range of " <<  this->sequence.size() << " elements "\
-//                 <<"with std::priority_queue: " << this->time_queue << " us" << std::endl;
-// }
 
 #endif

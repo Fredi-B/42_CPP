@@ -18,26 +18,35 @@ public:
 
     PmergeMe    &operator=(const PmergeMe &other);
 
-    std::multiset<int>::const_iterator  &begin(const PmergeMe<std::multiset<int> > &mergeSet) const;
-    std::multiset<int>::const_iterator  &end(const PmergeMe<std::multiset<int> > &mergeSet) const;
+/* ------------------- iterator -------------------- */
+
+    std::multiset<int>::const_iterator  begin(const PmergeMe<std::multiset<int> > &mergeSet) const;
+    std::multiset<int>::const_iterator  end(const PmergeMe<std::multiset<int> > &mergeSet) const;
+
+/* --------------------- member functions --------------------- */
 
     void    sort_sequence();
-    T       &getSortedSequence(const PmergeMe<std::multiset<int> > &mergeSet) const;
+
+/* --------------------- getter --------------------- */
+
+    const T &getSortedSequence(const PmergeMe<std::multiset<int> > &mergeSet) const;
     size_t  getSize();
     int     getSequenceElement(size_t i);
-    int     getSortedElement(PmergeMe<std::multiset<int> > &mergeSet, size_t pos);
     float   getSortingTime();
 
 
 private:
+    PmergeMe();
+
     std::vector<int>            sequence;
     T                           sorted_sequence;
     float                       sorting_time;
 
+/* --------------------- "setter" --------------------- */
+
     void    addElement(std::multiset<int> &sorted_sequence, size_t i);
     void    addElement(std::priority_queue<int> &sorted_sequence, size_t i);
 
-    PmergeMe();
 };
 
 # include "PmergeMe.tpp"

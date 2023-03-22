@@ -35,25 +35,13 @@ void    printResults(PmergeMe<std::multiset<int> > &mergeSet, PmergeMe<std::prio
 
     std::multiset<int>::const_iterator it;
     for (it = mergeSet.begin(mergeSet); it != mergeSet.end(mergeSet); it++)
-    {
-        std::cout << "test" << std::endl;
-
-        // std::cout << " " << *it;
-    }
-
-
-    // for (size_t i = 0; i < mergeSet.getSize(); i++)
-    //     std::cout << " " << mergeSet.getSortedElement(mergeSet, i);
+        std::cout << " " << *it;
     std::cout << std::endl;
 
-    // for (it_set = this->m_set.begin(); it_set != this->m_set.end(); it_set++)
-    //     std::cout << " " << *it_set;
-    // std::cout << std::endl;
-
-    // std::cout << "Time to process a range of " <<  this->sequence.size() << " elements "\
-    //             << "with std::multiset:       " << this->time_set << " us" << std::endl;
-    // std::cout << "Time to process a range of " <<  this->sequence.size() << " elements "\
-    //             <<"with std::priority_queue: " << this->time_queue << " us" << std::endl;
+    std::cout << "Time to process a range of " <<  mergeSet.getSize() << " elements "\
+                << "with std::multiset:       " << mergeSet.getSortingTime() << " us" << std::endl;
+    std::cout << "Time to process a range of " <<  mergeQueue.getSize() << " elements "\
+                <<"with std::priority_queue: " << mergeQueue.getSortingTime() << " us" << std::endl;
 
 }
 
