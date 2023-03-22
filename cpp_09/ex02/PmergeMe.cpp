@@ -56,7 +56,20 @@ void    PmergeMe::fillQueue()
 
 void    PmergeMe::printResults()
 {
-    std::cout << "Before: ";
-    //loop through sequence, print it
-    //for ()
+    std::multiset<int>::const_iterator  it_set;
+
+    std::cout << "Before:";
+    for (size_t i = 0; i < this->sequence.size(); i++)
+        std::cout << " " << this->sequence.at(i);
+    std::cout << std::endl;
+
+    std::cout << "After: ";
+    for (it_set = this->m_set.begin(); it_set != this->m_set.end(); it_set++)
+        std::cout << " " << *it_set;
+    std::cout << std::endl;
+
+    std::cout << "Time to process a range of " <<  this->sequence.size() << " elements "\
+                << "with std::multiset:       " << this->time_set << " us" << std::endl;
+    std::cout << "Time to process a range of " <<  this->sequence.size() << " elements "\
+                <<"with std::priority_queue: " << this->time_queue << " us" << std::endl;
 }
