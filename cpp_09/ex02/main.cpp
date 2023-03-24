@@ -1,5 +1,6 @@
 #include "PmergeMe.hpp"
 #include <sstream>
+#include <iomanip>
 
 bool                isInputCorrect(int argc, char** argv);
 bool                isNumber(std::string arg);
@@ -37,6 +38,7 @@ void    printResults(PmergeMe<std::multiset<int> > &mergeSet, PmergeMe<std::prio
         std::cout << " " << *it;
     std::cout << std::endl;
 
+    std::cout << std::setprecision(7) << std::fixed;
     std::cout << "Time to process a range of " <<  mergeSet.getSize() << " elements "\
                 << "with std::multiset:       " << mergeSet.getSortingTime() << " us" << std::endl;
     std::cout << "Time to process a range of " <<  mergeQueue.getSize() << " elements "\
