@@ -85,7 +85,7 @@ template<typename T>
 size_t  PmergeMe<T>::getSize() const {return (this->sequence.size());}
 
 template<typename T>
-int PmergeMe<T>::getSequenceElement(size_t i) const {return (this->sequence.at(i));}
+const std::vector<int> &PmergeMe<T>::getSequence() const {return (this->sequence);}
 
 template<typename T>
 float PmergeMe<T>::getSortingTime() const {return (this->sorting_time);}

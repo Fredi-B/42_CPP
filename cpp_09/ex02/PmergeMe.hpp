@@ -29,18 +29,18 @@ public:
 
 /* --------------------- getter --------------------- */
 
-    const T &getSortedSequence(const PmergeMe<std::multiset<int> > &mergeSet) const;
-    size_t  getSize() const;
-    int     getSequenceElement(size_t i) const;
-    float   getSortingTime() const;
+    const T                 &getSortedSequence(const PmergeMe<std::multiset<int> > &mergeSet) const;
+    size_t                  getSize() const;
+    const std::vector<int>  &getSequence() const;
+    float                   getSortingTime() const;
 
 
 private:
     PmergeMe();
 
-    std::vector<int>            sequence;
-    T                           sorted_sequence;
-    float                       sorting_time;
+    std::vector<int>    sequence;
+    T                   sorted_sequence;
+    float               sorting_time;
 
 /* --------------------- "setter" --------------------- */
 
