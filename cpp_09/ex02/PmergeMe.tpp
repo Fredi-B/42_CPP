@@ -82,12 +82,12 @@ template<typename T>
 const T    &PmergeMe<T>::getSortedSequence(const PmergeMe<std::multiset<int> > &mergeSet) const {return (mergeSet.sorted_sequence);}
 
 template<typename T>
-size_t  PmergeMe<T>::getSize() {return (this->sequence.size());}
+size_t  PmergeMe<T>::getSize() const {return (this->sequence.size());}
 
 template<typename T>
-int PmergeMe<T>::getSequenceElement(size_t i) {return (this->sequence.at(i));}
+int PmergeMe<T>::getSequenceElement(size_t i) const {return (this->sequence.at(i));}
 
 template<typename T>
-float PmergeMe<T>::getSortingTime() {return (this->sorting_time);}
+float PmergeMe<T>::getSortingTime() const {return (this->sorting_time);}
 
 #endif
