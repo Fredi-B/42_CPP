@@ -2,7 +2,9 @@
 #include "inputCheck.hpp"
 
 std::pair<std::string, double>  getInputData(std::string next_line, std::string delim);
-bool    foundInData(std::string date, std::map<std::string, double>::const_iterator it, std::map<std::string, double>::const_iterator it_end);
+void                            calculate_results(BitcoinExchange ftx, std::pair<std::string, double> input_pair);
+bool                            foundInData(std::string date, std::map<std::string, double>::const_iterator it, \
+                                                std::map<std::string, double>::const_iterator it_end);
 
 int main(int argc, char** argv)
 {
@@ -15,8 +17,6 @@ int main(int argc, char** argv)
         return (1);
 
     BitcoinExchange ftx(data);
-    std::map<std::string, double>::const_iterator it;
-    std::map<std::string, double>::const_iterator it_end = ftx.endExchangeRate();
 
     std::getline(input, next_line); // skip first line
     while (std::getline(input, next_line))
@@ -24,21 +24,7 @@ int main(int argc, char** argv)
         input_pair = getInputData(next_line, " | ");
         if (!InputDataCheck(input_pair))
             continue ;
-        /* find exchange rate, multiply it with amount and print result */
-        it = ftx.beginExchangeRate();
-        while (it != ftx.endExchangeRate())
-        {
-            if (foundInData(input_pair.first, it, it_end))
-            {
-                std::cout << input_pair.first << " => " << input_pair.second << " = " << input_pair.second * it->second << std::endl;
-                break ;
-            }
-            it++;
-        }
-        if (it == it_end)
-        {
-            std::cout << input_pair.first << " => " << input_pair.second << " = " << input_pair.second * (--it)->second << std::endl;
-        }
+        calculate_results(ftx, input_pair);
     }
     return (0);
 }
@@ -58,6 +44,26 @@ std::pair<std::string, double>  getInputData(std::string next_line, std::string 
     magical_converter_stream << _amount_string;
     magical_converter_stream >> data.second;
     return (data);
+}
+
+/* finds exchange rate, multiplies it with amount and prints result */
+void    calculate_results(BitcoinExchange ftx, std::pair<std::string, double> input_pair)
+{
+    std::map<std::string, double>::const_iterator it = ftx.beginExchangeRate();
+    std::map<std::string, double>::const_iterator it_end = ftx.endExchangeRate();
+    
+    for ( ; it != it_end; it++)
+    {
+        if (foundInData(input_pair.first, it, it_end))
+        {
+            std::cout << input_pair.first << " => " << input_pair.second << " = " << input_pair.second * it->second << std::endl;
+            break ;
+        }
+    }
+    if (it == it_end)
+    {
+        std::cout << input_pair.first << " => " << input_pair.second << " = " << input_pair.second * (--it)->second << std::endl;
+    }
 }
 
 bool    foundInData(std::string date, std::map<std::string, double>::const_iterator it, std::map<std::string, double>::const_iterator it_end)
