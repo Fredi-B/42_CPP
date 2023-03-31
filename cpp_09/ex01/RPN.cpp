@@ -74,6 +74,16 @@ bool  RPN::calculate(void)
     return (true);
 }
 
+    else if (this->expression[i] == '-' && isdigit(this->expression.at(i + 1)))
+    {
+        if (i + 2 < this->expression.length() && this->expression[i + 2] != ' ')
+        {
+            std::cout << "Error: invalid operand." << std::endl;
+            return (false);
+        }
+        this->operand_stack.push((this->expression[i + 1] - '0') * -1);
+        i++;
+    }
 bool    RPN::printResult()
 {
     if (this->operand_stack.size() > 1)
