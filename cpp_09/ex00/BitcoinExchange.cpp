@@ -1,5 +1,7 @@
 #include "BitcoinExchange.hpp"
 
+BitcoinExchange::BitcoinExchange() {}
+
 BitcoinExchange::BitcoinExchange(std::ifstream &data)
 {
     std::string next_line;
@@ -12,8 +14,15 @@ BitcoinExchange::BitcoinExchange(std::ifstream &data)
     }
 }
 
-BitcoinExchange::~BitcoinExchange()
+BitcoinExchange::BitcoinExchange(const BitcoinExchange &other) { *this = other; }
+
+BitcoinExchange::~BitcoinExchange() {}
+
+BitcoinExchange &BitcoinExchange::operator=(const BitcoinExchange &other)
 {
+    if (this != &other)
+        this->exchange_rate = other.exchange_rate;
+    return (*this);
 }
 
 void BitcoinExchange::fillExchangeRate(std:: string line, std::string delim)
@@ -47,11 +56,11 @@ std::map<std::string, double>::const_iterator BitcoinExchange::endExchangeRate(v
     return (this->exchange_rate.end());
 }
 
-std::pair<std::string, double>  BitcoinExchange::getExchangeRate(std::string date)
+std::pair<std::string, double>  BitcoinExchange::getExchangeRate(std::string date) const
 {
     std::pair<std::string, double>  data;
 
-    std::map<std::string, double>::iterator it = this->exchange_rate.begin();
+    std::map<std::string, double>::const_iterator it = this->exchange_rate.begin();
     while (it != this->exchange_rate.end())
     {
         if (it->first == date)
