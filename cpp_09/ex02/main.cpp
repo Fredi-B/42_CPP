@@ -2,10 +2,10 @@
 #include <sstream>
 #include <iomanip>
 
-bool                isInputCorrect(int argc, char** argv);
-bool                isNumber(std::string arg);
-std::vector<int>    fillSequence(int argc, char **argv);
-void                printResults(PmergeMe<std::multiset<int> > &mergeSet, PmergeMe<std::priority_queue<int> > &mergeQueue);
+bool    isInputCorrect(int argc, char** argv);
+bool    isNumber(std::string arg);
+void    fillSequence(std::vector<int> *sequence, int argc, char **argv);
+void    printResults(PmergeMe<std::multiset<int> > &mergeSet, PmergeMe<std::priority_queue<int> > &mergeQueue);
 
 int main(int argc, char** argv)
 {
@@ -13,9 +13,11 @@ int main(int argc, char** argv)
 
     if (!isInputCorrect(argc, argv))
         return (1);
-    sequence = fillSequence(argc, argv);
+    fillSequence(&sequence, argc, argv);
+
     PmergeMe<std::multiset<int> >        mergeSet(sequence);
     PmergeMe<std::priority_queue<int> >  mergeQueue(sequence);
+
     mergeSet.sort_sequence();
     mergeQueue.sort_sequence();
     printResults(mergeSet, mergeQueue);
@@ -43,13 +45,10 @@ void    printResults(PmergeMe<std::multiset<int> > &mergeSet, PmergeMe<std::prio
                 << "with std::multiset:       " << mergeSet.getSortingTime() << " us" << std::endl;
     std::cout << "Time to process a range of " <<  mergeQueue.getSize() << " elements "\
                 <<"with std::priority_queue: " << mergeQueue.getSortingTime() << " us" << std::endl;
-
 }
 
-
-std::vector<int>    fillSequence(int argc, char **argv)
+void    fillSequence(std::vector<int> *sequence, int argc, char **argv)
 {
-    std::vector<int>    sequence;
     std::stringstream   magical_converter_stream;
     unsigned int        next_int;
 
@@ -58,11 +57,10 @@ std::vector<int>    fillSequence(int argc, char **argv)
         magical_converter_stream << argv[i];
         magical_converter_stream >> next_int;
         magical_converter_stream.clear();
-        sequence.push_back(next_int);
+        sequence->push_back(next_int);
     }
-    return (sequence);
+    return ;
 }
-
 
 bool    isInputCorrect(int argc, char** argv)
 {
