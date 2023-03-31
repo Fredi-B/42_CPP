@@ -27,8 +27,25 @@ bool  RPN::calculate(void)
 {
     for (size_t i = 0; i < this->expression.length(); i++)
     {
-        if (!fillStack(i))
-            return (false);
+        if (isdigit(this->expression[i]))
+        {
+            if (i + 1 < this->expression.length() && this->expression[i + 1] != ' ')
+            {
+                std::cout << "Error: invalid operand." << std::endl;
+                return (false);
+            }
+            this->operand_stack.push(this->expression[i] - '0');
+        }
+        else if (this->expression[i] == '-' && i + 1 < this->expression.length() && isdigit(this->expression.at(i + 1)))
+        {
+            if (i + 2 < this->expression.length() && this->expression[i + 2] != ' ')
+            {
+                std::cout << "Error: invalid operand." << std::endl;
+                return (false);
+            }
+            this->operand_stack.push((this->expression[i + 1] - '0') * -1);
+            i++;
+        }
         else if (this->expression[i] == ' ')
             continue ;
         else
@@ -59,34 +76,11 @@ bool  RPN::calculate(void)
     return (true);
 }
 
-bool    RPN::fillStack(size_t i)
-{
-    if (isdigit(this->expression[i]))
-    {
-        if (i + 1 < this->expression.length() && this->expression[i + 1] != ' ')
-        {
-            std::cout << "Error: invalid operand." << std::endl;
-            return (false);
-        }
-        this->operand_stack.push(this->expression[i] - '0');
-    }
-    else if (this->expression[i] == '-' && isdigit(this->expression.at(i + 1)))
-    {
-        if (i + 2 < this->expression.length() && this->expression[i + 2] != ' ')
-        {
-            std::cout << "Error: invalid operand." << std::endl;
-            return (false);
-        }
-        this->operand_stack.push((this->expression[i + 1] - '0') * -1);
-        i++;
-    }
-}
-
 bool    RPN::checkSyntax(size_t i)
 {
     if (this->operand_stack.size() < 2)
     {
-        std::cout << "Error: not enough operands." << std::endl;
+        std::cout << "Error: not enough operands or invalid operator." << std::endl;
         return (false);
     }
     if (i + 1 < this->expression.length() && this->expression[i + 1] != ' ')
