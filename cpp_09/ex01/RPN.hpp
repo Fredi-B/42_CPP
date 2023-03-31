@@ -22,6 +22,9 @@ private:
     int             operand2;
     std::string     expression;
 
+    bool    fillStack(size_t i);
+    bool    checkSyntax(size_t i);
+
     RPN(void);
 };
 

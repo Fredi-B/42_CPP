@@ -8,7 +8,9 @@ int main(int argc, char** argv)
         return (1);
     }
     RPN rpn(argv);
-    rpn.calculate();
-    rpn.printResult();
+    if (!rpn.calculate())
+        return (2);
+    if (!rpn.printResult())
+        return (3);
     return (0);
 }
