@@ -56,6 +56,8 @@ std::map<std::string, double>::const_iterator BitcoinExchange::endExchangeRate(v
     return (this->exchange_rate.end());
 }
 
+std::map<std::string, double>   BitcoinExchange::getExchange_rate() const { return (this->exchange_rate); }
+
 std::pair<std::string, double>  BitcoinExchange::getExchangeRate(std::string date) const
 {
     std::pair<std::string, double>  data;

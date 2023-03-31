@@ -26,6 +26,7 @@ public:
     std::map<std::string, double>::const_iterator beginExchangeRate(void) const;
     std::map<std::string, double>::const_iterator endExchangeRate(void) const;
 
+    std::map<std::string, double>   getExchange_rate() const;
     std::pair<std::string, double>  getExchangeRate(std::string date) const;
 };
 

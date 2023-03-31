@@ -60,7 +60,7 @@ void    calculate_results(BitcoinExchange ftx, std::pair<std::string, double> in
             break ;
         }
     }
-    if (it == it_end)
+    if (it == it_end && !ftx.getExchange_rate().empty())
     {
         std::cout << input_pair.first << " => " << input_pair.second << " = " << input_pair.second * (--it)->second << std::endl;
     }
